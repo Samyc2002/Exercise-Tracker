@@ -50,6 +50,13 @@ function isValidDate(date) {
   return date instanceof Date && !isNaN(date);
 }
 
+app.get('/api/users', (req, res, next) => {
+  User.find({}, function(err, data) {
+    if(err) next(err);
+    res.json(data);
+  });
+});
+
 app.post('/api/users', (req, res, next) => {
   const new_user = req.body.username;
   if (new_user) {
