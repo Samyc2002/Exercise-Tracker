@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const shortId = require('shortid');
 const cors = require('cors')
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srv://samy:31172808s@c@cluster0.ryuey.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const app = express()
 
 app.use(cors());
@@ -147,8 +147,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
       }
 
       let logs = [];
-      console.log(exercises.length);
-      for (let i in exercises.length) {
+      for (let i=0; i<exercises.length; i++) {
         logs.push({
           description: exercises[i].description,
           duration: exercises[i].duration,
