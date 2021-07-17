@@ -140,13 +140,14 @@ app.get('/api/users/:_id/logs', (req, res) => {
       const toDate = new Date(req.query.to);
       const limit = Number(req.query.limit);
 
-      // if (isValidDate(toDate)) {
-      //   exercises = exercises.filter(item => item.date >= fromDate && item.date <= toDate);
-      // } else if (isValidDate(fromDate)) {
-      //   exercises = exercises.filter(item => item.date >= fromDate);
-      // }
+      if (isValidDate(toDate)) {
+        exercises = exercises.filter(item => item.date >= fromDate && item.date <= toDate);
+      } else if (isValidDate(fromDate)) {
+        exercises = exercises.filter(item => item.date >= fromDate);
+      }
 
       let logs = [];
+      console.log(exercises.length);
       for (let i in exercises.length) {
         logs.push({
           description: exercises[i].description,
